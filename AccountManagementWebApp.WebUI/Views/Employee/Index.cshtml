@@ -1,0 +1,28 @@
+﻿@model List<ResultEmployeeDTO>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Ad</th>
+        <th>Soyad</th>
+        <th>Title</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.EmployeeID</th>
+            <td>@item.FirstName</td>
+            <td>@item.LastName</td>
+            <td>@item.Title</td>
+            <td><a href="@Url.Action("DeleteEmployee", "Employee", new { id = item.EmployeeID })" class="btn mb-1 btn-rounded btn-outline-danger">Sil</a></td>
+            <td><a href="@Url.Action("UpdateEmployee", "Employee", new { id = item.EmployeeID })" class="btn mb-1 btn-rounded btn-outline-success">Güncelle</a></td>
+        </tr>
+    }
+</table>
+<a href="@Url.Action("AddEmployee", "Employee")" class="btn mb-1 btn-rounded btn-outline-info">Yeni Çalışan Girişi</a>
